@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinite Holistic – Saúde e Estética Natural</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --creme: #f5f0e8;
+    --bege: #e8dfd0;
+    --bege-escuro: #c9b99a;
+    --verde: #7a9e7e;
+    --verde-escuro: #4a6e4e;
+    --castanho: #6b5744;
+    --texto: #3a2e24;
+    --branco: #fdfaf6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--creme);
+    color: var(--texto);
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, #e8dfd0 0%, #d6c9b4 50%, #c5b89e 100%);
+    text-align: center;
+    padding: 50px 20px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(122,158,126,0.15);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: rgba(122,158,126,0.1);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--castanho);
+    letter-spacing: 0.05em;
+    display: none;
+  }
+  .hero p {
+    font-size: 0.85rem;
+    color: var(--verde-escuro);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 6px;
+    font-weight: 500;
+  }
+  .hero-sub {
+    font-size: 0.8rem;
+    color: var(--castanho);
+    margin-top: 8px;
+    opacity: 0.7;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* NAV TABS */
+  .tabs {
+    display: flex;
+    background: var(--bege);
+    border-bottom: 1px solid var(--bege-escuro);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 6px;
+    text-align: center;
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--castanho);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.2;
+  }
+  .tab.active {
+    color: var(--verde-escuro);
+    border-bottom-color: var(--verde);
+    background: var(--creme);
+  }
+
+  /* SECTIONS */
+  .section { display: none; padding: 24px 16px 40px; max-width: 480px; margin: 0 auto; }
+  .section.active { display: block; }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--castanho);
+    margin-bottom: 6px;
+  }
+  .section-desc {
+    font-size: 0.8rem;
+    color: var(--verde-escuro);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* SERVICE CARDS */
+  .service-card {
+    background: var(--branco);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 3px solid var(--verde);
+  }
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--castanho);
+    margin-bottom: 4px;
+  }
+  .service-card p {
+    font-size: 0.78rem;
+    color: #7a6e64;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .service-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .service-duration {
+    font-size: 0.72rem;
+    color: var(--verde-escuro);
+    letter-spacing: 0.05em;
+  }
+  .service-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--castanho);
+    font-weight: 600;
+  }
+  .btn-book {
+    width: 100%;
+    margin-top: 12px;
+    padding: 11px;
+    background: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-book:hover { background: var(--verde-escuro); }
+
+  /* PACKAGE CARDS */
+  .package-card {
+    background: var(--branco);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    position: relative;
+    overflow: hidden;
+  }
+  .package-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--verde), var(--bege-escuro));
+  }
+  .package-badge {
+    display: inline-block;
+    background: var(--verde);
+    color: white;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .package-badge.gold {
+    background: linear-gradient(90deg, #b8960c, #d4af37);
+  }
+  .package-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--castanho);
+    margin-bottom: 6px;
+  }
+  .package-card p {
+    font-size: 0.78rem;
+    color: #7a6e64;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .package-includes {
+    list-style: none;
+    margin-bottom: 14px;
+  }
+  .package-includes li {
+    font-size: 0.77rem;
+    color: var(--texto);
+    padding: 4px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+  .package-includes li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--verde);
+    font-size: 0.6rem;
+    top: 5px;
+  }
+  .package-pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .price-original {
+    font-size: 0.85rem;
+    text-decoration: line-through;
+    color: #aaa;
+  }
+  .price-final {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--castanho);
+    font-weight: 600;
+  }
+  .price-savings {
+    font-size: 0.72rem;
+    color: var(--verde-escuro);
+    font-weight: 500;
+    background: rgba(122,158,126,0.15);
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .btn-package {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, var(--verde-escuro), var(--verde));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    font-weight: 500;
+  }
+  .btn-package:hover { opacity: 0.88; }
+
+  /* VOUCHER SECTION */
+  .voucher-box {
+    background: var(--branco);
+    border-radius: 14px;
+    padding: 24px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    text-align: center;
+  }
+  .voucher-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--castanho);
+    margin-bottom: 8px;
+  }
+  .voucher-box p {
+    font-size: 0.78rem;
+    color: #7a6e64;
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+  .voucher-input {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid var(--bege-escuro);
+    border-radius: 10px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    background: var(--creme);
+    color: var(--texto);
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 12px;
+  }
+  .voucher-input:focus { border-color: var(--verde); }
+  .btn-voucher {
+    width: 100%;
+    padding: 13px;
+    background: var(--castanho);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .btn-voucher:hover { opacity: 0.85; }
+  .voucher-result {
+    margin-top: 16px;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    display: none;
+    line-height: 1.6;
+  }
+  .voucher-result.valid {
+    background: rgba(122,158,126,0.15);
+    border: 1px solid var(--verde);
+    color: var(--verde-escuro);
+    display: block;
+  }
+  .voucher-result.invalid {
+    background: rgba(180,60,60,0.08);
+    border: 1px solid #c97a7a;
+    color: #a04444;
+    display: block;
+  }
+
+  /* COMO FUNCIONA */
+  .steps { margin-top: 8px; }
+  .step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 32px; height: 32px;
+    min-width: 32px;
+    background: var(--verde);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .step-text h4 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--castanho);
+    margin-bottom: 3px;
+  }
+  .step-text p {
+    font-size: 0.77rem;
+    color: #7a6e64;
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.72rem;
+    color: var(--bege-escuro);
+    letter-spacing: 0.08em;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 100;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--branco);
+    border-radius: 20px 20px 0 0;
+    padding: 28px 20px 36px;
+    width: 100%;
+    max-width: 480px;
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .modal h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--castanho);
+    margin-bottom: 8px;
+  }
+  .modal p {
+    font-size: 0.8rem;
+    color: #7a6e64;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .modal-msg {
+    background: var(--creme);
+    border: 1px solid var(--bege-escuro);
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 0.78rem;
+    color: var(--texto);
+    margin-bottom: 18px;
+    line-height: 1.7;
+  }
+  .btn-wa {
+    width: 100%;
+    padding: 15px;
+    background: #25D366;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .btn-cancel {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid var(--bege-escuro);
+    border-radius: 12px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    color: var(--castanho);
+    cursor: pointer;
+  }
+
+  /* SUPPLEMENTS */
+  .supl-category {
+    margin-bottom: 28px;
+  }
+  .supl-category-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid var(--bege-escuro);
+  }
+  .supl-category-title span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--castanho);
+    letter-spacing: 0.03em;
+  }
+  .supl-category-icon {
+    width: 30px; height: 30px;
+    background: linear-gradient(135deg, var(--verde), var(--verde-escuro));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .supl-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .supl-grid.single { grid-template-columns: 1fr; }
+  .supl-card {
+    background: var(--branco);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    overflow: hidden;
+  }
+  .supl-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--verde), var(--bege-escuro));
+  }
+  .supl-card img {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: var(--creme);
+    padding: 6px;
+    margin-bottom: 4px;
+    display: none;
+  }
+  .supl-card img.loaded {
+    display: block;
+  }
+  .supl-placeholder {
+    width: 100%;
+    height: 110px;
+    background: linear-gradient(135deg, var(--bege), var(--creme));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    color: var(--castanho);
+    text-align: center;
+    padding: 8px;
+    font-style: italic;
+    line-height: 1.3;
+    border: 1px dashed var(--bege-escuro);
+  }
+  .supl-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--castanho);
+    line-height: 1.2;
+  }
+  .supl-card .subl {
+    font-size: 0.68rem;
+    color: var(--verde-escuro);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .supl-ps {
+    font-size: 0.7rem;
+    color: #7a6e64;
+    line-height: 1.4;
+  }
+  .supl-ps strong { color: var(--castanho); }
+  .supl-ing {
+    font-size: 0.68rem;
+    color: var(--bege-escuro);
+    font-style: italic;
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+  .btn-supl {
+    margin-top: 6px;
+    padding: 8px 10px;
+    background: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: center;
+  }
+  .btn-supl:hover { background: var(--verde-escuro); }
+  .supl-banner {
+    background: linear-gradient(135deg, var(--castanho), #8a7060);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    color: white;
+    text-align: center;
+  }
+  .supl-banner p {
+    font-size: 0.75rem;
+    opacity: 0.85;
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+  .supl-banner strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+  }
+
+  /* Editable hint */
+  [contenteditable="true"] {
+    outline: none;
+    border-bottom: 1px dashed transparent;
+    transition: border-color 0.2s;
+  }
+  [contenteditable="true"]:hover {
+    border-bottom-color: var(--verde);
+  }
+  [contenteditable="true"]:focus {
+    border-bottom-color: var(--verde);
+    background: rgba(122,158,126,0.05);
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img src="data:image/jpeg;base64,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" alt="Infinite Holistic" style="width:120px;height:120px;border-radius:50%;margin:0 auto 16px;display:block;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+  <p>Saúde e Estética Natural</p>
+
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('servicos')">Serviços</div>
+  <div class="tab" onclick="showTab('pacotes')">Pacotes</div>
+  <div class="tab" onclick="showTab('suplementos')">Suplementos</div>
+  <div class="tab" onclick="showTab('voucher')">Voucher</div>
+  <div class="tab" onclick="showTab('como')">Como Funciona</div>
+</div>
+
+<!-- SERVIÇOS -->
+<div class="section active" id="servicos">
+  <div class="section-title">Os Nossos Serviços</div>
+  <div class="section-desc">Cada tratamento é uma experiência de bem-estar personalizada para si.</div>
+
+  <div class="service-card">
+    <h3 contenteditable="true">Massagem Relaxante</h3>
+    <p contenteditable="true">Alívio de tensões, relaxamento profundo do corpo e mente. Ideal para stress e cansaço acumulado.</p>
+    <div class="service-meta">
+      <span class="service-duration" contenteditable="true">60 min</span>
+      <span class="service-price">€<span contenteditable="true">55</span></span>
+    </div>
+    <button class="btn-book" onclick="openModal('Massagem Relaxante', '60 min', '55')">Reservar Agora</button>
+  </div>
+
+  <div class="service-card">
+    <h3 contenteditable="true">Tratamento Facial</h3>
+    <p contenteditable="true">Limpeza profunda, hidratação e renovação da pele. Resultados visíveis desde a primeira sessão.</p>
+    <div class="service-meta">
+      <span class="service-duration" contenteditable="true">50 min</span>
+      <span class="service-price">€<span contenteditable="true">45</span></span>
+    </div>
+    <button class="btn-book" onclick="openModal('Tratamento Facial', '50 min', '45')">Reservar Agora</button>
+  </div>
+
+  <div class="service-card">
+    <h3 contenteditable="true">Tratamento de Celulite</h3>
+    <p contenteditable="true">Técnica especializada para redução de celulite e modelação corporal. Resultados progressivos e duradouros.</p>
+    <div class="service-meta">
+      <span class="service-duration" contenteditable="true">60 min</span>
+      <span class="service-price">€<span contenteditable="true">60</span></span>
+    </div>
+    <button class="btn-book" onclick="openModal('Tratamento de Celulite', '60 min', '60')">Reservar Agora</button>
+  </div>
+
+  <div class="service-card">
+    <h3 contenteditable="true">Massagem Terapêutica</h3>
+    <p contenteditable="true">Foco em zonas de tensão, contracturas e dores musculares. Técnica adaptada a cada cliente.</p>
+    <div class="service-meta">
+      <span class="service-duration" contenteditable="true">60 min</span>
+      <span class="service-price">€<span contenteditable="true">60</span></span>
+    </div>
+    <button class="btn-book" onclick="openModal('Massagem Terapêutica', '60 min', '60')">Reservar Agora</button>
+  </div>
+
+  <div class="service-card">
+    <h3 contenteditable="true">Drenagem Linfática</h3>
+    <p contenteditable="true">Estimula a circulação linfática, reduz inchaço e toxinas. Sensação de leveza imediata.</p>
+    <div class="service-meta">
+      <span class="service-duration" contenteditable="true">60 min</span>
+      <span class="service-price">€<span contenteditable="true">55</span></span>
+    </div>
+    <button class="btn-book" onclick="openModal('Drenagem Linfática', '60 min', '55')">Reservar Agora</button>
+  </div>
+</div>
+
+<!-- PACOTES -->
+<div class="section" id="pacotes">
+  <div class="section-title">Pacotes & Vantagens</div>
+  <div class="section-desc">Poupe mais, cuide-se melhor. Cada pacote inclui bónus exclusivos para si.</div>
+
+  <div class="package-card">
+    <span class="package-badge">Mais Popular</span>
+    <h3 contenteditable="true">Pacote Bem-Estar · 5 Sessões</h3>
+    <p contenteditable="true">Escolha qualquer serviço e faça 5 sessões com desconto. Inclui voucher surpresa de oferta.</p>
+    <ul class="package-includes">
+      <li contenteditable="true">5 sessões à sua escolha</li>
+      <li contenteditable="true">1 voucher de 20% num serviço diferente</li>
+      <li contenteditable="true">Marcações prioritárias</li>
+    </ul>
+    <div class="package-pricing">
+      <span class="price-original">€<span contenteditable="true">275</span></span>
+      <span class="price-final">€<span contenteditable="true">230</span></span>
+      <span class="price-savings">Poupa €<span contenteditable="true">45</span></span>
+    </div>
+    <button class="btn-package" onclick="openModal('Pacote Bem-Estar – 5 Sessões', '', '230')">Quero Este Pacote</button>
+  </div>
+
+  <div class="package-card">
+    <span class="package-badge gold">Premium</span>
+    <h3 contenteditable="true">Pacote Transformação · 10 Sessões</h3>
+    <p contenteditable="true">O nosso pacote mais completo. Resultados visíveis garantidos com acompanhamento personalizado.</p>
+    <ul class="package-includes">
+      <li contenteditable="true">10 sessões à sua escolha</li>
+      <li contenteditable="true">1 tratamento facial de oferta</li>
+      <li contenteditable="true">Voucher de 30% num novo serviço</li>
+      <li contenteditable="true">Relatório de evolução personalizado</li>
+      <li contenteditable="true">Marcações prioritárias</li>
+    </ul>
+    <div class="package-pricing">
+      <span class="price-original">€<span contenteditable="true">600</span></span>
+      <span class="price-final">€<span contenteditable="true">480</span></span>
+      <span class="price-savings">Poupa €<span contenteditable="true">120</span></span>
+    </div>
+    <button class="btn-package" onclick="openModal('Pacote Transformação – 10 Sessões', '', '480')">Quero Este Pacote</button>
+  </div>
+
+  <div class="package-card">
+    <span class="package-badge">Descoberta</span>
+    <h3 contenteditable="true">Duo Facial + Corporal</h3>
+    <p contenteditable="true">Experimente a combinação perfeita: rosto e corpo tratados na mesma visita.</p>
+    <ul class="package-includes">
+      <li contenteditable="true">1 Tratamento Facial</li>
+      <li contenteditable="true">1 Massagem Relaxante</li>
+      <li contenteditable="true">Voucher de 15% na próxima visita</li>
+    </ul>
+    <div class="package-pricing">
+      <span class="price-original">€<span contenteditable="true">100</span></span>
+      <span class="price-final">€<span contenteditable="true">80</span></span>
+      <span class="price-savings">Poupa €<span contenteditable="true">20</span></span>
+    </div>
+    <button class="btn-package" onclick="openModal('Duo Facial + Corporal', '', '80')">Quero Este Pacote</button>
+  </div>
+</div>
+
+<!-- VOUCHER -->
+<div class="section" id="voucher">
+  <div class="section-title">Usar Voucher</div>
+  <div class="section-desc">Recebeu um código de desconto? Valide aqui antes da sua sessão.</div>
+
+  <div class="voucher-box">
+    <h3>Validar Código</h3>
+    <p>Introduza o código recebido por WhatsApp para ver o seu desconto aplicado.</p>
+    <input class="voucher-input" type="text" id="voucherInput" placeholder="Ex: FACIAL-IH-2847" maxlength="20">
+    <button class="btn-voucher" onclick="validarVoucher()">Validar Código</button>
+    <div class="voucher-result" id="voucherResult"></div>
+  </div>
+
+  <div class="voucher-box" style="background: linear-gradient(135deg, #f5f0e8, #e8dfd0);">
+    <h3 style="font-size:1.1rem;">Como receber o seu voucher?</h3>
+    <p>Após confirmar um pacote ou serviço, a Ana envia-lhe o código de desconto diretamente por WhatsApp. Guarde-o para a sua próxima visita.</p>
+  </div>
+</div>
+
+<!-- COMO FUNCIONA -->
+<div class="section" id="como">
+  <div class="section-title">Como Funciona</div>
+  <div class="section-desc">Simples, rápido e pensado para si.</div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <h4>Escolha o seu serviço ou pacote</h4>
+        <p>Navegue pelos nossos tratamentos e encontre o que mais se adapta a si. Serviço individual ou pacote com desconto.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <h4>Clique em Reservar</h4>
+        <p>Abre o WhatsApp da Ana automaticamente com a sua escolha já escrita. Só precisa de enviar.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <h4>Confirmação e Voucher</h4>
+        <p>A Ana confirma a marcação e envia-lhe o código de voucher para os seus bónus. Tudo por WhatsApp.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text">
+        <h4>Use o seu desconto</h4>
+        <p>Na próxima visita, valide o código aqui na página. O desconto é confirmado antes da sessão.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--branco); border-radius:14px; padding:20px; margin-top:8px; box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+    <div style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--castanho); margin-bottom:8px;">Tem alguma dúvida?</div>
+    <p style="font-size:0.78rem; color:#7a6e64; margin-bottom:14px; line-height:1.6;">Fale diretamente com a Ana. Estamos disponíveis para ajudar.</p>
+    <a href="https://wa.me/351919916770?text=Olá%20Ana!%20Tenho%20uma%20questão%20sobre%20os%20vossos%20serviços." 
+       style="display:block; text-align:center; padding:13px; background:#25D366; color:white; border-radius:10px; text-decoration:none; font-size:0.8rem; letter-spacing:0.08em; font-family:'Jost',sans-serif;">
+      💬 Falar com a Ana
+    </a>
+  </div>
+</div>
+
+<!-- SUPLEMENTOS -->
+<div class="section" id="suplementos">
+  <div class="section-title">Suplementação</div>
+  <div class="section-desc">Gama MF Profissional — ciência e natureza ao serviço do seu bem-estar.</div>
+
+  <div class="supl-banner">
+    <strong>Arquitetura do Bem-Estar</strong>
+    <p>Biodisponibilidade superior · Ingredientes patenteados · Potência terapêutica</p>
+  </div>
+
+  <!-- ESTRUTURA E MOBILIDADE -->
+  <div class="supl-category">
+    <div class="supl-category-title">
+      <div class="supl-category-icon">🦴</div>
+      <span>Estrutura e Mobilidade</span>
+    </div>
+    <div class="supl-grid">
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-cartil">🦴<br>Cartil</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-cartil-300x300.jpg" alt="Cartil" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">Regeneração Articular</div>
+        <h4>CARTIL</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Desgaste articular / Osteoartrite<br><strong>Solução:</strong> Regeneração</div>
+        <div class="supl-ing">FORTIGEL®, Cartydiss®, Vitamina C</div>
+        <button class="btn-supl" onclick="openSuplModal('CARTIL')">Saber Mais</button>
+      </div>
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-colagénio-forte">✨<br>Colagénio Forte</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-colagenio-forte-300x300.jpg" alt="Colagénio Forte" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">Beleza e Resistência</div>
+        <h4>COLAGÉNIO FORTE</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Rugas, flacidez<br><strong>Solução:</strong> Beleza e resistência</div>
+        <div class="supl-ing">VERISOL®, Ácido Hialurónico, Cacau</div>
+        <button class="btn-supl" onclick="openSuplModal('COLAGÉNIO FORTE')">Saber Mais</button>
+      </div>
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-complexo-mineral">⚡<br>Complexo Mineral</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-complexo-mineral-300x300.jpg" alt="Complexo Mineral" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">A Base Óssea</div>
+        <h4>COMPLEXO MINERAL</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Desmineralização óssea<br><strong>Solução:</strong> Base óssea</div>
+        <div class="supl-ing">AQUAMIN®, Taurina, Magnésio</div>
+        <button class="btn-supl" onclick="openSuplModal('COMPLEXO MINERAL')">Saber Mais</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENTE E EQUILÍBRIO -->
+  <div class="supl-category">
+    <div class="supl-category-title">
+      <div class="supl-category-icon">🧠</div>
+      <span>Mente e Equilíbrio</span>
+    </div>
+    <div class="supl-grid">
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-bacopa-plus">🧠<br>Bacopa Plus</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-natural-bacopa-plus-300x300.jpg" alt="Bacopa Plus" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">O Nootrópico Natural</div>
+        <h4>BACOPA PLUS</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Declínio cognitivo<br><strong>Solução:</strong> Foco e memória</div>
+        <div class="supl-ing">BacoMind®, Resveratrol, Ácido Alfa Lipóico</div>
+        <button class="btn-supl" onclick="openSuplModal('BACOPA PLUS')">Saber Mais</button>
+      </div>
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-ginkgo-forte">🌿<br>Ginkgo Forte</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-ginko-forte-300x300.jpg" alt="Ginkgo Forte" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">Circulação Cerebral</div>
+        <h4>GINKGO FORTE</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Má circulação cerebral<br><strong>Solução:</strong> Oxigenação</div>
+        <div class="supl-ing">Ginkgo Biloba, Ashwagandha, Grainha da Uva</div>
+        <button class="btn-supl" onclick="openSuplModal('GINKGO FORTE')">Saber Mais</button>
+      </div>
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-calm">🌙<br>Calm</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-calm-300x300.jpg" alt="Calm" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">Serenidade Sem Sedação</div>
+        <h4>CALM</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Ansiedade / Insónia<br><strong>Solução:</strong> Relaxamento</div>
+        <div class="supl-ing">Peptidea®, Valeriana, Passiflora, Magnésio</div>
+        <button class="btn-supl" onclick="openSuplModal('CALM')">Saber Mais</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEFESA E PROTEÇÃO -->
+  <div class="supl-category">
+    <div class="supl-category-title">
+      <div class="supl-category-icon">🛡️</div>
+      <span>Defesa e Proteção</span>
+    </div>
+    <div class="supl-grid">
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-pro-imu">🛡️<br>Pro Imu</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-pro-imu-300x300.jpg" alt="Pro Imu" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">Fortaleza Imunitária</div>
+        <h4>PRO IMU</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Imunidade baixa<br><strong>Solução:</strong> Defesa natural</div>
+        <div class="supl-ing">Reishi, Agaricus, Equinácea, Própolis, Zinco</div>
+        <button class="btn-supl" onclick="openSuplModal('PRO IMU')">Saber Mais</button>
+      </div>
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-oxipp">⚗️<br>Oxi++</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-oxi-300x300.jpg" alt="Oxi++" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">Anti-inflamatório Sistémico</div>
+        <h4>OXI++</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Stress oxidativo<br><strong>Solução:</strong> Proteção celular</div>
+        <div class="supl-ing">OPCs, Aloe Vera Liofilizado, Prebióticos</div>
+        <button class="btn-supl" onclick="openSuplModal('OXI++')">Saber Mais</button>
+      </div>
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-multivitamínico">💊<br>Multivitamínico</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-multivitaminico-concentrado-300x300.jpg" alt="Multivitamínico" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">A Base Essencial</div>
+        <h4>MULTIVITAMÍNICO</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Falta de vitalidade<br><strong>Solução:</strong> Base diária completa</div>
+        <div class="supl-ing">Coenzima Q10, Complexo B, Vit A, C, D, E, K2</div>
+        <button class="btn-supl" onclick="openSuplModal('MULTIVITAMÍNICO')">Saber Mais</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETOX E PURIFICAÇÃO -->
+  <div class="supl-category">
+    <div class="supl-category-title">
+      <div class="supl-category-icon">🌿</div>
+      <span>Detox e Purificação</span>
+    </div>
+    <div class="supl-grid">
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-detox-purific">🌱<br>Detox Purific</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-detox-purific-300x300.jpg" alt="Detox Purific" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">Regeneração Hepática</div>
+        <h4>DETOX PURIFIC</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Fígado gordo, toxinas<br><strong>Solução:</strong> Limpeza profunda</div>
+        <div class="supl-ing">Cardo-Mariano (Silimarina), Alcachofra, Colina</div>
+        <button class="btn-supl" onclick="openSuplModal('DETOX PURIFIC')">Saber Mais</button>
+      </div>
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-aloe-clorela">🍃<br>Aloe Clorela</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-clorela-aloe-vera-300x300.jpg" alt="Aloe Clorela" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">Purificação Profunda</div>
+        <h4>ALOE CLORELA</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Metais pesados, acidez<br><strong>Solução:</strong> Quelação e alcalinização</div>
+        <div class="supl-ing">Chlorella, Aloe Vera Liofilizado</div>
+        <button class="btn-supl" onclick="openSuplModal('ALOE CLORELA')">Saber Mais</button>
+      </div>
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-venocell">💧<br>Venocell</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-venocell-300x300.jpg" alt="Venocell" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">Circulação Venosa e Linfática</div>
+        <h4>VENOCELL</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Pernas cansadas, celulite, retenção<br><strong>Solução:</strong> Fluxo e leveza</div>
+        <div class="supl-ing">Centelha Asiática, Bromelina, Grainha de Uva</div>
+        <button class="btn-supl" onclick="openSuplModal('VENOCELL')">Saber Mais</button>
+      </div>
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-vitaproteico">💪<br>Vitaproteico</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-vita-proteico-300x300.jpg" alt="Vitaproteico" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">Nutrição Funcional Low Carb</div>
+        <h4>VITAPROTEICO</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Saciedade e massa muscular<br><strong>Solução:</strong> Substituto de refeição</div>
+        <div class="supl-ing">Proteína de Ervilha, Fibras Prebióticas, Vitaminas</div>
+        <button class="btn-supl" onclick="openSuplModal('VITAPROTEICO')">Saber Mais</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VITALIDADE ESPECÍFICA -->
+  <div class="supl-category">
+    <div class="supl-category-title">
+      <div class="supl-category-icon">⚡</div>
+      <span>Vitalidade Específica</span>
+    </div>
+    <div class="supl-grid">
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-plurivit">🫐<br>Plurivit</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-plurivit-300x300.jpg" alt="Plurivit" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">Proteção Urinária</div>
+        <h4>PLURIVIT</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Cistites recorrentes<br><strong>Solução:</strong> Proteção urinária</div>
+        <div class="supl-ing">Cranberry, Inulina, Hibisco</div>
+        <button class="btn-supl" onclick="openSuplModal('PLURIVIT')">Saber Mais</button>
+      </div>
+      <div class="supl-card">
+        <div class="supl-placeholder" id="ph-men-plus">⚡<br>Men Plus</div>
+        <img src="https://mfprofissional.com/wp-content/uploads/2025/07/mf-profissional-produtos-naturais-suplemento-alimentar-men-plus-300x300.jpg" alt="Men Plus" onload="this.classList.add('loaded');this.previousElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <div class="subl">Potência Masculina 40+</div>
+        <h4>MEN PLUS</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Próstata, vigor<br><strong>Solução:</strong> Vitalidade masculina</div>
+        <div class="supl-ing">Saw Palmetto, Licopeno, L-Arginina</div>
+        <button class="btn-supl" onclick="openSuplModal('MEN PLUS')">Saber Mais</button>
+      </div>
+      <div class="supl-card">
+        <div style="width:100%;height:110px;background:linear-gradient(135deg,var(--bege),var(--creme));border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:4px;font-size:2rem;">🌸</div>
+        <div class="subl">Equilíbrio Feminino</div>
+        <h4>WOMAN PLUS</h4>
+        <div class="supl-ps"><strong>Problema:</strong> Menopausa, libido<br><strong>Solução:</strong> Equilíbrio hormonal</div>
+        <div class="supl-ing">Isoflavonas, Maca Peruana, Salva</div>
+        <button class="btn-supl" onclick="openSuplModal('WOMAN PLUS')">Saber Mais</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--branco); border-radius:12px; padding:16px; text-align:center; margin-top:4px; box-shadow:0 2px 10px rgba(0,0,0,0.06);">
+    <div style="font-size:0.72rem; color:#7a6e64; line-height:1.6; margin-bottom:12px;">Não sabe qual o suplemento mais adequado para si? A Ana ajuda-a a escolher a combinação certa.</div>
+    <a href="https://wa.me/351919916770?text=Olá%20Ana!%20Gostava%20de%20saber%20mais%20sobre%20a%20gama%20de%20suplementos%20MF%20Profissional." 
+       style="display:block; padding:12px; background:#25D366; color:white; border-radius:10px; text-decoration:none; font-size:0.78rem; font-family:'Jost',sans-serif; letter-spacing:0.08em;">
+      💬 Aconselhamento Personalizado
+    </a>
+  </div>
+</div>
+
+<div class="footer">
+  © Infinite Holistic · Saúde e Estética Natural · Lourinhã
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <h3 id="modalTitle">Reservar Serviço</h3>
+    <p>A sua mensagem estará pré-preenchida. Só precisa de enviar pelo WhatsApp.</p>
+    <div class="modal-msg" id="modalMsg"></div>
+    <a class="btn-wa" id="modalWABtn" href="#" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Enviar pelo WhatsApp
+    </a>
+    <button class="btn-cancel" onclick="closeModalBtn()">Cancelar</button>
+  </div>
+</div>
+
+<script>
+  // TABS
+  function showTab(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // MODAL
+  function openModal(nome, duracao, preco) {
+    const msg = duracao
+      ? `Olá Ana! 👋 Gostava de marcar:\n\n*${nome}*\nDuração: ${duracao}\nValor: €${preco}\n\nQuando tem disponibilidade?`
+      : `Olá Ana! 👋 Tenho interesse no:\n\n*${nome}*\nValor: €${preco}\n\nPode dar-me mais informações e marcar?`;
+    
+    document.getElementById('modalTitle').textContent = nome;
+    document.getElementById('modalMsg').innerHTML = msg.replace(/\n/g, '<br>').replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+    
+    const encoded = encodeURIComponent(msg);
+    document.getElementById('modalWABtn').href = `https://wa.me/351919916770?text=${encoded}`;
+    document.getElementById('modalOverlay').classList.add('open');
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('modalOverlay')) {
+      document.getElementById('modalOverlay').classList.remove('open');
+    }
+  }
+  function closeModalBtn() {
+    document.getElementById('modalOverlay').classList.remove('open');
+  }
+
+  function openSuplModal(nome) {
+    const msg = `Olá Ana! 👋 Gostava de saber mais sobre o suplemento:\n\n*${nome}*\n\nPode informar-me sobre preço e como tomar?`;
+    document.getElementById('modalTitle').textContent = nome;
+    document.getElementById('modalMsg').innerHTML = msg.replace(/\n/g, '<br>').replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+    const encoded = encodeURIComponent(msg);
+    document.getElementById('modalWABtn').href = `https://wa.me/351919916770?text=${encoded}`;
+    document.getElementById('modalOverlay').classList.add('open');
+  }
+
+  // VOUCHER VALIDATION
+  // Codes: format SERVIÇO-IH-XXXX  |  value = desconto
+  const vouchers = {
+    'FACIAL-IH-2025': { desc: '20% de desconto no Tratamento Facial', servico: 'Tratamento Facial', valido: true },
+    'MASSAGEM-IH-2025': { desc: '15% de desconto em qualquer Massagem', servico: 'Massagem', valido: true },
+    'CELULITE-IH-2025': { desc: '25% de desconto no Tratamento de Celulite', servico: 'Tratamento de Celulite', valido: true },
+    'BEM-ESTAR-IH-2025': { desc: '30% de desconto num novo serviço à escolha', servico: 'Qualquer serviço', valido: true },
+    'DUO-IH-2025': { desc: '15% de desconto na próxima visita', servico: 'Qualquer serviço', valido: true },
+  };
+
+  function validarVoucher() {
+    const code = document.getElementById('voucherInput').value.trim().toUpperCase();
+    const result = document.getElementById('voucherResult');
+    
+    if (!code) {
+      result.className = 'voucher-result invalid';
+      result.textContent = 'Por favor introduza um código.';
+      return;
+    }
+
+    const v = vouchers[code];
+    if (v && v.valido) {
+      result.className = 'voucher-result valid';
+      result.innerHTML = `✓ Voucher válido!<br><strong>${v.desc}</strong><br>Aplicável em: ${v.servico}<br><br>Mostre este ecrã à Ana na sua próxima visita.`;
+    } else {
+      result.className = 'voucher-result invalid';
+      result.innerHTML = `Código não encontrado ou já utilizado.<br>Verifique se escreveu corretamente ou contacte a Ana.`;
+    }
+  }
+
+  document.getElementById('voucherInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') validarVoucher();
+  });
+</script>
+</body>
+</html>
